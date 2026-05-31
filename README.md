@@ -23,21 +23,36 @@ Predicting Estimated Time of Arrival (ETA) is a critical component of food deliv
 ```text
 .
 ├── configs/
-│   └── xgb_best_params.json      # Cached optimal hyperparameters
+│   └── xgb_best_params.json         # Model hyperparameters
 ├── data/
-│   ├── X_train.csv, y_train.csv  # Training set
-│   └── X_test.csv, y_test.csv    # Hold-out test set
-├── src/
-│   ├── preprocess.py             # Data cleaning, encoding, and scaling
-│   ├── train_lr.py               # Linear Regression modeling
-│   ├── train_xgb.py              # XGBoost modeling (with Early Stopping)
-│   └── evaluate.py               # Metrics calculation & visualization
+│   ├── .gitkeep                     # Keeps folder structure on Git
+│   ├── data_raw.csv                 # Immutable raw data
+│   ├── X_test.csv                   # Split features
+│   ├── X_train.csv
+│   ├── y_test.csv                   # Split targets
+│   └── y_train.csv
 ├── outputs/
-│   ├── models/                   # Serialized production-ready models (.pkl)
-│   ├── plots/                    # EDA and model comparison visualizations
-│   ├── predictions/              # Predicted ETA values (.csv)
-│   ├── evaluation_report.txt     # Automated MAE/RMSE metrics report
-│   └── tune_hyperparameters.py   # Independent GridSearchCV research script
-├── main.py                       # Master pipeline orchestrator
-├── requirements.txt              # Environment dependencies
-└── README.md
+│   ├── models/
+│   │   ├── .gitkeep
+│   │   ├── linear_regression.pkl    # Trained model artifacts
+│   │   └── xgboost_tuned.pkl
+│   ├── plots/
+│   │   ├── .gitkeep
+│   │   ├── correlation_heatmap.png  # EDA & Evaluation charts
+│   │   └── feature_importance.png
+│   └── predictions/
+│       ├── .gitkeep
+│       ├── y_pred_linear.csv        # Model inference outputs
+│       └── y_pred_xgb_tuned.csv
+├── src/                             # Source code directory
+│   ├── __init__.py                  # Makes src a Python package
+│   ├── data_preprocessing.py        # Data cleaning & engineering
+│   ├── eda.py                       # Exploratory Data Analysis
+│   ├── evaluation.py                # Metrics & validation logic
+│   ├── model_baseline.py            # Simple baseline model
+│   ├── model_xgboost.py             # Main model architecture
+│   └── tune_xgboost.py              # Hyperparameter tuning
+├── .gitignore                       # Git ignore rules
+├── environment.yml                  # Conda environment definition
+├── main.py                          # Pipeline execution entry point
+└── README.md                        # Project documentation
