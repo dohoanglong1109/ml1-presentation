@@ -36,8 +36,7 @@ Predicting Estimated Time of Arrival (ETA) is a critical component of food deliv
 │   ├── models/                   # Serialized production-ready models (.pkl)
 │   ├── plots/                    # EDA and model comparison visualizations
 │   ├── predictions/              # Predicted ETA values (.csv)
-│   └── evaluation_report.txt     # Automated MAE/RMSE metrics report
-├── scripts/
+│   ├── evaluation_report.txt     # Automated MAE/RMSE metrics report
 │   └── tune_hyperparameters.py   # Independent GridSearchCV research script
 ├── main.py                       # Master pipeline orchestrator
 ├── requirements.txt              # Environment dependencies
